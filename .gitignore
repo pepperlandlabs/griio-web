@@ -1,0 +1,14 @@
+.DS_Store
+.bundle
+db/*.sqlite3
+log/*
+tmp/**/*
+public/system
+public/storage
+*.swp
+*.css
+*.tmproj
+coverage
+tags
+.idea
+*.sublime-*

@@ -1,0 +1,145 @@
+Follow the instructions below to get the app running on a fresh install of Mac
+OSX 10.7.
+
+Install needed software packages
+--------------------------------
+
+### Install Xcode 4.3
+
+Download the installer from the Apple App Store.
+
+### Install Xcode Command Line Tools
+
+Open Xcode 4.3 and navigate to Preferences > Downloads and install 'Command
+Line Tools'
+
+### Install Homebrew
+
+We use Homebrew to install all the software dependencies for the app. Follow the
+instructions at http://mxcl.github.com/homebrew/ to install the base system to
+`/usr/local`.
+
+### Install GCC 4.2
+
+Install GCC 4.2 as Xcode does not ship with it and ruby does not like GCC LLVM.
+
+    $ brew install https://raw.github.com/adamv/homebrew-alt/master/duplicates/apple-gcc42.rb
+
+### Configure Xcode
+
+Manage the path to the Xcode folder for Xcode BSD tools.
+
+    $ sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer
+
+### Re-link gcc to 4.2
+
+    $ sudo ln -sf /usr/local/bin/gcc-4.2 /usr/bin/gcc
+
+### Install git
+
+    $ brew install git
+
+### Install PostgreSQL
+
+    $ brew install postgresql
+
+Because Lion ships with a version of psql, ensure your PATH is set so
+/usr/local/bin takes priority in your bash profile.
+
+    export PATH=/usr/local/bin:$PATH
+
+Be sure to follow the instructions printed at the end of the install if you
+want postgresql to start up automatically when you boot your machine.
+
+### Install git-completion
+
+    $ brew install git bash-completion
+
+Append the following to your ~/.bash_profile:
+
+    if [ -f `brew --prefix`/etc/bash_completion ]; then
+      . `brew --prefix`/etc/bash_completion
+    fi
+
+
+Install RVM
+-----------
+
+RVM is an easy way to manage multiple Ruby installations and environments.
+Follow the instructions at http://rvm.beginrescueend.com/rvm/install/ to install
+the system. By default, RVM keeps everything in ~/.rvm.
+
+### Configure ~/.rvmrc
+
+Create an .rvmrc file in your home directory with the following contents:
+
+    export rvm_install_on_use_flag=1
+    export rvm_gemset_create_on_use_flag=1
+    export rvm_archflags="-arch x86_64"
+    export rvm_project_rvmrc_default=1
+
+After you install RVM, close your shell and open a new one to make sure it's
+loaded properly.
+
+Checkout the app
+----------------
+
+This can be done either via the command below or using the GitHub client available at http://mac.github.com/
+
+    $ git clone git@github.com:edmundsalvacion/griio-web.git
+
+Install Ruby
+------------
+
+Ruby will automatically be installed when you `cd` into the app directory. This
+happens when RVM detects the `.rvmrc` file in the root directory of the app.
+This file tells RVM the version of Ruby that our app requires to run.
+
+    $ cd griio-web
+
+Set master to rebase on pull
+----------------------------
+
+We never want to merge when pulling on master, so set the default to always rebase.
+
+    $ git config branch.master.rebase true
+
+Install needed gems
+-------------------
+
+### Install Bundler
+
+    $ gem install bundler
+
+### Install all other gems
+
+Run the following from the root of the app directory.
+
+    $ bundle install
+
+
+Install git pre-commit hook
+---------------------------
+
+    $ bundle exec rake strip_whitespace:install
+
+Database set up
+---------------
+
+Before Rails is able to set up your database, you must create a super user for postgres
+
+    $ createuser griio -s
+
+Now you can use rake to set up the project database
+
+    $ bundle exec rake db:setup
+
+
+Start the app server
+--------------------
+
+From the root app directory, run the following command.
+
+    $ bundle exec rails s
+
+The app should now be running at: "http://localhost:3000"
