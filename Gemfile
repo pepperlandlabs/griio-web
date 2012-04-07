@@ -28,3 +28,7 @@ group :test, :development do
   gem 'capybara'
   gem "turn", "~> 0.9.4"
 end
+
+group :development do
+  gem 'thin'
+end
