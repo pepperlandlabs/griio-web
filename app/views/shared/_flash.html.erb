@@ -1,0 +1,6 @@
+<% flash.each do |type, message| %>
+  <div class="alert-message fade in <%= flash_class(type) %>">
+    <a class="close" href="#" data-dismiss="alert">x</a>
+    <%= content_tag :p, message %>
+  </div>
+<% end %>

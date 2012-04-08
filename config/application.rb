@@ -64,7 +64,6 @@ module GriioWeb
 
     config.generators do |g|
       g.test_framework nil
-      g.template_engine :haml
     end
   end
 end
