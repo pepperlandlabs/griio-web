@@ -6,7 +6,6 @@ tmp/**/*
 public/system
 public/storage
 *.swp
-*.css
 *.tmproj
 coverage
 tags
