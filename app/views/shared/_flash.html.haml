@@ -1,0 +1,4 @@
+- flash.each do |type, message|
+  %div.alert-message.fade.in{ :class => flash_class(type) }
+    %a.close{:href => "#", 'data-dismiss' => 'alert'} ×
+    =content_tag :p, message
