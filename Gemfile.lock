@@ -169,7 +169,6 @@ DEPENDENCIES
   minitest
   pg
   rails (= 3.2.3)
-  sass-rails (~> 3.2.3)
   thin
   turn (~> 0.9.4)
   twitter-bootstrap-rails
