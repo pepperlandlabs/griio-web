@@ -4,17 +4,26 @@ require "turn/autorun"
 require "capybara/rails"
 require 'rails/test_help'
 
+DatabaseCleaner.strategy = :truncation
+
 class MiniTest::Spec
   include ActiveSupport::Testing::SetupAndTeardown
-  include ActiveRecord::TestFixtures
 
   alias :method_name :__name__ if defined? :__name__
+
+  before :each do
+    DatabaseCleaner.clean
+  end
 end
 
 class IntegrationSpec < MiniTest::Spec
   include Rails.application.routes.url_helpers
   include Capybara::DSL
   register_spec_type(/integration$/, self)
+
+  after :each do
+    Capybara.reset_sessions!
+  end
 end
 
 class ControllerSpec < MiniTest::Spec

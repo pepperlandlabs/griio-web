@@ -8,9 +8,11 @@ gem 'pg'
 
 # application dependencies
 gem 'thin'
+gem "bcrypt-ruby", "~> 3.0.1"
 
 # front end helpers
 gem 'jquery-rails'
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,7 +24,9 @@ end
 
 # tests
 group :test, :development do
+  gem 'pry'
   gem 'minitest'
   gem 'capybara'
+  gem 'database_cleaner'
   gem "turn", "~> 0.9.4"
 end
