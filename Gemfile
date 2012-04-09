@@ -6,6 +6,9 @@ gem 'rails', '3.2.3'
 # db
 gem 'pg'
 
+# application dependencies
+gem 'thin'
+
 # front end helpers
 gem 'jquery-rails'
 
@@ -22,8 +25,4 @@ group :test, :development do
   gem 'minitest'
   gem 'capybara'
   gem "turn", "~> 0.9.4"
-end
-
-group :development do
-  gem 'thin'
 end
