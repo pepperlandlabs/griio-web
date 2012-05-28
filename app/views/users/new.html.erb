@@ -6,9 +6,9 @@
     <fieldset>
       <legend>Create an account</legend>
       <%= f.error_notification %>
-      <%= f.input :email, :autofocus => true %>
-      <%= f.input :password %>
-      <%= f.input :password_confirmation %>
+      <%= f.input :username, autofocus: true, input_html: { value: session[:username] } %>
+      <%= f.input :name, input_html: { value: session[:name] } %>
+      <%= f.input :email, input_html: { value: session[:email] } %>
 
       <div class="form-actions">
         <%= f.button :submit, "Sign Up" %>
