@@ -4,7 +4,10 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.3'
 
 # db
-gem 'pg'
+gem "mongoid", "~> 3.0.0.rc"
+
+# third party connect
+gem "koala", "~> 1.4.1"
 
 # application dependencies
 gem 'thin'

@@ -1,7 +1,10 @@
-class User < ActiveRecord::Base
-  has_secure_password
+class User
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  attr_accessible :email, :password, :password_confirmation
+  field :name, type: String
+  field :username, type: String
+  field :email, type: String
 
   validates_uniqueness_of :email
 end
