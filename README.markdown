@@ -23,7 +23,8 @@ instructions at http://mxcl.github.com/homebrew/ to install the base system to
 
 Install GCC 4.2 as Xcode does not ship with it and ruby does not like GCC LLVM.
 
-    $ brew install https://raw.github.com/adamv/homebrew-alt/master/duplicates/apple-gcc42.rb
+    $ brew tap homebrew/dupes
+    $ brew install apple-gcc42
 
 ### Configure Xcode
 
