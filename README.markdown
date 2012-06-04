@@ -39,17 +39,9 @@ Manage the path to the Xcode folder for Xcode BSD tools.
 
     $ brew install git
 
-### Install PostgreSQL
+### Install MongoDB
 
-    $ brew install postgresql
-
-Because Lion ships with a version of psql, ensure your PATH is set so
-/usr/local/bin takes priority in your bash profile.
-
-    export PATH=/usr/local/bin:$PATH
-
-Be sure to follow the instructions printed at the end of the install if you
-want postgresql to start up automatically when you boot your machine.
+    $ brew install mongodb
 
 ### Install git-completion
 
@@ -80,6 +72,13 @@ Create an .rvmrc file in your home directory with the following contents:
 
 After you install RVM, close your shell and open a new one to make sure it's
 loaded properly.
+
+Install RVM after cd bundler hook
+---------------------------------
+
+Run this command to add the ./bin directory of your projects to your path on cd
+
+    chmod +x $rvm_path/hooks/after_cd_bundler
 
 Checkout the app
 ----------------
@@ -121,18 +120,15 @@ Run the following from the root of the app directory.
 Install git pre-commit hook
 ---------------------------
 
-    $ bundle exec rake strip_whitespace:install
+    $ rake strip_whitespace:install
 
 Database set up
 ---------------
 
-Before Rails is able to set up your database, you must create a super user for postgres
-
-    $ createuser griio -s
 
 Now you can use rake to set up the project database
 
-    $ bundle exec rake db:setup
+    $ rake db:mongoid:create_indexes
 
 
 Start the app server
@@ -140,6 +136,6 @@ Start the app server
 
 From the root app directory, run the following command.
 
-    $ bundle exec rails s
+    $ rails s
 
 The app should now be running at: "http://localhost:3000"
