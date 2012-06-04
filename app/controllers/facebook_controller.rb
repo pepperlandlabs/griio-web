@@ -2,7 +2,11 @@ class FacebookController < ApplicationController
   before_filter :get_oauth
 
   def index
-    redirect_to @oauth.url_for_oauth_code
+    permissions = %w(
+      read_stream
+      publish_stream
+    )
+    redirect_to @oauth.url_for_oauth_code(permissions: permissions)
   end
 
   def callback
