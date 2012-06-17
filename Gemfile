@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # rails
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.6'
 
 # db
 gem "mongoid", "~> 3.0.0.rc"
