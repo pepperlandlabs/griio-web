@@ -12,6 +12,9 @@ gem "koala", "~> 1.4.1"
 # application dependencies
 gem 'thin'
 gem "bcrypt-ruby", "~> 3.0.1"
+gem "sidekiq", "~> 2.0.3"
+gem 'slim'
+gem 'sinatra', require: nil
 
 # front end helpers
 gem 'jquery-rails'

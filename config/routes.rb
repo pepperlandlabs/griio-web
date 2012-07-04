@@ -7,4 +7,7 @@ GriioWeb::Application.routes.draw do
   get 'facebook/callback' => 'facebook#callback'
 
   root to: 'home#index'
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
