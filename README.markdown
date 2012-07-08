@@ -44,16 +44,6 @@ Manage the path to the Xcode folder for Xcode BSD tools.
 
     $ brew install mongodb
 
-### Install git-completion
-
-    $ brew install git bash-completion
-
-Append the following to your ~/.bash_profile:
-
-    if [ -f `brew --prefix`/etc/bash_completion ]; then
-      . `brew --prefix`/etc/bash_completion
-    fi
-
 
 Install RVM
 -----------
@@ -97,12 +87,12 @@ This file tells RVM the version of Ruby that our app requires to run.
 
     $ cd griio-web
 
-Set master to rebase on pull
+Set git merge to ff only
 ----------------------------
 
-We never want to merge when pulling on master, so set the default to always rebase.
+We want to prevent non fast forward merges.
 
-    $ git config branch.master.rebase true
+    $ git config merge.ff only
 
 Install needed gems
 -------------------
@@ -115,7 +105,7 @@ Install needed gems
 
 Run the following from the root of the app directory.
 
-    $ bundle install
+    $ bundle install --binstubs
 
 
 Install git pre-commit hook
