@@ -20,4 +20,11 @@ class User
   def facebook_graph
     @facebook_graph ||= Koala::Facebook::API.new(self.facebook_access_token)
   end
+
+  def view_video(video)
+    if feed_item = self.feed_items.unscoped.where(video_id: video.id).one
+      feed_item.viewed = true
+      feed_item.save
+    end
+  end
 end

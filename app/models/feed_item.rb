@@ -7,6 +7,8 @@ class FeedItem
   belongs_to :user
   belongs_to :video
 
+  default_scope where(viewed: false)
+
   index({ user_id: 1, video_id: 1 }, { unique: true })
   index({ user_id: 1, viewed: 1 })
 
