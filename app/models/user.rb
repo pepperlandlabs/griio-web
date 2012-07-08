@@ -9,6 +9,7 @@ class User
   field :facebook_access_token, type: String
 
   has_many :likes
+  has_many :feed_items
 
   index({ facebook_id: 1 }, { unique: true })
 

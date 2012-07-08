@@ -31,7 +31,11 @@ class FacebookWorker
           video.save
         end
 
-        user.likes.create(video_id: video.id) if facebook_user_id.eql?('me')
+        if facebook_user_id.eql?('me')
+          user.likes.create(video_id: video.id)
+        else
+          user.feed_items.create(video_id: video.id)
+        end
       end
     end
   end
