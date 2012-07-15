@@ -1,9 +1,10 @@
-<div class="hero-unit">
-  <h1>Project Headline</h1>
-  <p>Followed by a catchy tagline!</p>
+<div class="home hero-unit">
+  <h1><%= image_tag 'griio-logo.png' %></h1>
   <p>
-    <a class="btn btn-primary btn-large">
-      Learn more
-    </a>
+  Griio is a magical way to view video content that's relevant to you.
+  Just sign in below using Facebook and we'll start learning what you like!
+  </p>
+  <p>
+  <%= link_to "Sign in with Facebook", facebook_path, class: 'btn btn-primary btn-large'  %>
   </p>
 </div>
