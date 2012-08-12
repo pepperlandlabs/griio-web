@@ -14,6 +14,8 @@ gem 'thin'
 gem "sidekiq", "~> 2.0.3"
 gem 'slim'
 gem 'sinatra', require: nil
+gem 'rabl'
+gem 'yajl-ruby', require: 'yajl'
 
 # front end helpers
 gem 'jquery-rails'
