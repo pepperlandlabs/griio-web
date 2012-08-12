@@ -15,7 +15,7 @@ class User
 
   validates_uniqueness_of :email
 
-  after_create { |user| FacebookWorker.perform_async(user.id) }
+  after_create { |user| FacebookWorker.perform_async(user.id.to_s) }
 
   def facebook_graph
     @facebook_graph ||= Koala::Facebook::API.new(self.facebook_access_token)

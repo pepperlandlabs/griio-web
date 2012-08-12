@@ -2,7 +2,7 @@
   <div class="span12">
   <h1>Sign Up</h1>
 
-  <%= simple_form_for @user, html: { class: 'form-horizontal' } do |f| %>
+  <%= simple_form_for [:web, @user], html: { class: 'form-horizontal' } do |f| %>
     <fieldset>
       <legend>Create an account</legend>
       <%= f.error_notification %>

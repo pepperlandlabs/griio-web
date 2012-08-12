@@ -1,7 +1,7 @@
-class VideosController < ApplicationController
+class Web::VideosController < ApplicationController
   def index
     feed_item = current_user.feed_items.one
-    redirect_to feed_item.video
+    redirect_to web_video_path(feed_item.video) if feed_item
   end
 
   def show

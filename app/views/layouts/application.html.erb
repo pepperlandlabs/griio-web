@@ -29,10 +29,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <%= link_to image_tag('griio-logo-small.png'), videos_path, class: 'brand' %>
+          <%= link_to image_tag('griio-logo-small.png'), web_videos_path, class: 'brand' %>
           <div class="container nav-collapse">
             <ul class="nav pull-right">
-              <li><%= link_to "Log Out", session_path, method: "delete" %></li>
+              <li><%= link_to "Log Out", web_session_path, method: "delete" %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -42,7 +42,7 @@
 
     <div class="container">
       <div class="content">
-        <%= render partial: 'shared/flash', locals: { flash: flash } %>
+        <%= render partial: 'web/shared/flash', locals: { flash: flash } %>
         <%= yield %>
       </div><!--/content-->
 

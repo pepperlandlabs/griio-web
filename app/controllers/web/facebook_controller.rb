@@ -1,4 +1,4 @@
-class FacebookController < ApplicationController
+class Web::FacebookController < ApplicationController
   before_filter :get_oauth
 
   def index
@@ -20,13 +20,13 @@ class FacebookController < ApplicationController
         user.save
       end
       session[:user_id] = user.id.to_s
-      redirect_to root_path, notice: "You are logged in as #{user.username}!"
+      redirect_to web_root_path, notice: "You are logged in as #{user.username}!"
     else
       session[:facebook_access_token] = access_token
       session[:facebook_id] = profile['id']
       session[:name] = profile['name']
       session[:username] = profile['username']
-      redirect_to new_user_path
+      redirect_to new_web_user_path
     end
   end
 
@@ -35,7 +35,7 @@ class FacebookController < ApplicationController
     @oauth = Koala::Facebook::OAuth.new(
       '397586540283131',
       'dfe450355847f848006e44a55045149a',
-      facebook_callback_url
+      web_facebook_callback_url
     )
   end
 end
