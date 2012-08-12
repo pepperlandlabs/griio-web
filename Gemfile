@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # rails
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # db
-gem "mongoid", "~> 3.0.0.rc"
+gem "mongoid", "~> 3.0.4"
 
 # third party connect
 gem "koala", "~> 1.4.1"
