@@ -5,6 +5,8 @@ class Like
   belongs_to :user
   belongs_to :video
 
+  field :seconds_into_video, type: Integer
+
   index({ user_id: 1, video_id: 1 }, { unique: true })
   index({ video_id: 1 })
 
