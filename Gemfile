@@ -7,7 +7,7 @@ gem 'rails', '3.2.8'
 gem "mongoid", "~> 3.0.4"
 
 # third party connect
-gem "koala", "~> 1.4.1"
+gem "koala", "~> 1.5.0"
 
 # application dependencies
 gem 'thin'
@@ -16,6 +16,7 @@ gem 'slim'
 gem 'sinatra', require: nil
 gem 'jbuilder'
 gem 'yajl-ruby', require: 'yajl'
+gem "youtube_it", "~> 2.1.7"
 
 # front end helpers
 gem 'jquery-rails'
