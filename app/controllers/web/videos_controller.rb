@@ -6,6 +6,7 @@ class Web::VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @feed_item = current_user.feed_items.unscoped.where(video_id: @video.id).one
     current_user.view_video(@video) if current_user
   end
 end

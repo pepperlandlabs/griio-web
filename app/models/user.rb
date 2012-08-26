@@ -7,6 +7,7 @@ class User
   field :email, type: String
   field :facebook_id, type: String
   field :facebook_access_token, type: String
+  field :auth_token, type: String
 
   has_many :likes
   has_many :feed_items
@@ -15,6 +16,7 @@ class User
 
   validates_uniqueness_of :email
 
+  before_create :generate_auth_token
   after_create { |user| FacebookWorker.perform_async(user.id.to_s) }
 
   def facebook_graph
@@ -26,5 +28,11 @@ class User
       feed_item.viewed = true
       feed_item.save
     end
+  end
+
+  private
+
+  def generate_auth_token
+    self.auth_token = SecureRandom.base64(15).tr('+/=', 'xyz')
   end
 end

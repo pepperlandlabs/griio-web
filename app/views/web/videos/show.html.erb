@@ -1,1 +1,6 @@
 <iframe class="youtube-player" type="text/html" width="100%" height="728px" src="<%= @video.embed_url %>" frameborder="0"></iframe>
+
+<p>
+  From <%= @feed_item.facebook_user_name %>
+  <%= image_tag @feed_item.facebook_profile_picture_url(:square), width: 25, height: 25 %>
+</p>

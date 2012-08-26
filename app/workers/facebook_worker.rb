@@ -4,13 +4,14 @@ class FacebookWorker
   def perform(user_id)
     user = User.find(user_id)
     friends = user.facebook_graph.get_connections('me', 'friends')
-    friend_ids = friends.collect { |f| f['id'] }
-    friend_ids.push('me').each do |fb_user_id|
-      extract_facebook_videos(user, fb_user_id)
+    friends.each do |friend|
+      extract_facebook_videos(user, friend['id'], friend['name'])
     end
+
+    extract_facebook_videos(user, 'me')
   end
 
-  def extract_facebook_videos(user, facebook_user_id = 'me')
+  def extract_facebook_videos(user, facebook_user_id, name = nil)
     feed = user.facebook_graph.get_connections(facebook_user_id, 'feed')
     feed.each do |item|
       if item['type'].eql?('video')
@@ -34,7 +35,11 @@ class FacebookWorker
         if facebook_user_id.eql?('me')
           user.likes.create(video_id: video.id)
         else
-          user.feed_items.create(video_id: video.id)
+          user.feed_items.create(
+            video_id: video.id,
+            facebook_user_id: facebook_user_id,
+            facebook_user_name: name
+          )
         end
       end
     end
